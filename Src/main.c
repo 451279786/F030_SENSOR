@@ -162,12 +162,12 @@ int main(void)
 		Int_To_Str(PWMCapture(),(char *)co2char);   //CO2
 
 		x = 0;y = 0;
-		OLED_ShowCHinese(x+0  ,y,4);//温度：
+		OLED_ShowCHinese(x+0  ,y,4);//温度显示：
 		OLED_ShowCHinese(x+=18,y,5);//
 		OLED_ShowCHinese(x+=18,y,6);//
 		OLED_ShowString (x+=7 ,y+1,tem,2);
 
-		OLED_ShowCHinese(x+=25,y,7);//湿度：
+		OLED_ShowCHinese(x+=25,y,7);//湿度显示：
 		OLED_ShowCHinese(x+=18,y,8);//
 		OLED_ShowCHinese(x+=18,y,9);//
 		OLED_ShowString (x+=7 ,y+1,hum,2);
