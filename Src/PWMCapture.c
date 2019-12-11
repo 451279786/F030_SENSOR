@@ -1,6 +1,7 @@
 #include "PWMCapture.h"
 
-
+//#define CO2   1
+#define PM2_5   1
 
 
 uint32_t capture_Buf[3] = {0};   //PWM输入捕获 存放计数值
@@ -43,12 +44,17 @@ uint32_t PWMCapture(void)
 				high_time = capture_Buf[1]- capture_Buf[0];    //高电平时间
 			else
 				high_time = 0xFFFF + capture_Buf[1] - capture_Buf[0];    //高电平时间
-			//HAL_UART_Transmit(&huart1, (uint8_t *)high_time, 1, 0xffff);   //发送高电平时间
+
+#if CO2
 			high_time = ((high_time / 10) - 2)*10;
 			printf("high_time = %dPPM",high_time);
-
+#elif PM2_5
+			
+			high_time = ((1000 - (high_time / 10))/10);
+			printf("PM2.5 = %d%%",high_time);
+			
+#endif		
 			capture_Cnt = 0;  //清空标志位
-		
 			return high_time;
 				
 	}

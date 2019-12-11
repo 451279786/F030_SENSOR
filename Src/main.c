@@ -207,6 +207,8 @@ int main(void)
 			ADCTime = HAL_GetTick();
 			
 			PWMCapture();
+			
+			
 
 		}
 		
